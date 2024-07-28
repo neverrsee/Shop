@@ -1,13 +1,11 @@
 {% extends "Shop/base.html" %}
 {% load static %}
-{% block title %} Shop catalog {% endblock %}
-{% block content%}
-<h1 class="text-center fw-bold mb-4">Каталог</h1>
-<div class="d-flex flex-wrap justify-content-center gap-3 mx-auto" style="min-width: 800px;">
-  {% for product in products%}
-  <a href="{% url 'product_detail' product_id=product.id %}" class="card rounded-4 text-decoration-none" style="width: 18rem;">
-    <img class="card-img-top rounded-4" src="{{product.image.url}}" alt="" style="max-height: 230px;">
-    <div class="card-body">
+{% block title %} Shop - {{product.name}} {% endblock %}
+{% block content %}
+
+<div class="d-flex align-items-center gap-5 rounded-4 mx-auto" style="width: 1000px;">
+    <img class="rounded-4" src="{{product.image.url}}" alt="" style="width:50%;">
+    <div class="d-flex flex-column gap-3">
       <h5 class="card-title">{{product.name}}</h5>
       <span class="card-text d-flex mt-auto">
         <span class="fw-bold fs-2">{{product.price}}₽</span>
@@ -26,12 +24,11 @@
       </div>
       <p class="card-text">{{product.descript}}.</p>
       {% if product.is_available%}
-      <button class="btn btn-primary">Подробнее</button>
+      <button class="btn btn-primary">Оформить заказ</button>
       {% else %}
       <button class="btn btn-primary" disabled>нет в наличии</button>
       {% endif %}
     </div>
-  </a>
-  {% endfor %}
-</div>
-{% endblock %}
+  </div>
+
+{% endblock%}

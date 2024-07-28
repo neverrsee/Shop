@@ -9,9 +9,9 @@
         <span class="align-self-start fw-bold fs-5">
             {{order.id}}
         </span>
-        <span>
+        <a href="{% url 'product_detail' product_id=order.product.id %}">
             {{order.product.name}}
-        </span>
+        </a>
         <span>
             {{order.delivery_adress}}
         </span>
